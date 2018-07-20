@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>map</title>
+
+	<link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/themes/dark/main.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="site_css.css">
+	<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.7.css">
+	<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.7.css">
+	<style>
+		.table {
+			margin: 0 auto 0 auto;
+		}
+
+		/*----- TABLE_FORM_BORDER  ----- */
+
+		table.form {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 100 auto 0 auto;
+			color: #666;
+			line-height: 20px;
+		}
+
+		table.form th {
+			/*
+background: #a9e4ff;
+border: 1px solid #0055FF;
+*/
+			background: repeat-x scroll 0 0 #efefef;
+			border: 1px solid #B4DEE2 !important;
+			font-size: 13px;
+			color: #666;
+			text-align: center;
+			height: 25px;
+			line-height: 25px;
+			overflow: hidden;
+			padding: 5px;
+		}
+
+		table.form td {
+			border: 1px solid #B4DEE2 !important;
+			color: #FFF;
+			padding: 2px;
+			font-size: 13px;
+			line-height: 20px;
+			vertical-align: middle;
+			/*text-align:left;*/
+			font-weight: normal;
+			padding: 5px;
+		}
+
+		table.form tr:hover {
+			/* animation: sparkle 1s ease infinite; */
+			background-color: rgba(255, 238, 0, 0.2);
+
+		}
+	</style>
+
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+
+		var dojoConfig = {
+			has: {
+				"esri-featurelayer-webgl": 0
+				//LabelLayer 需設為1, 但就會造成 FeatureAccess 不會即時顯示
+			}
+		};
+
+	</script>
+
+	<script src="https://js.arcgis.com/4.8/"></script>
+	<script src="site_map.js"></script>
+	<script src="site.js"></script>
+
+
+	<script type="text/javascript">
+		$(function () { //@window.onload
+			formInit(); //@site.js
+			mapInit(); //@site_map.js
+		});	
+	</script>
+</head>
+
+<body class="calcite-maps calcite-nav-top">
+	<nav style="display:;" class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark">
+		<div class="calcite-title calcite-overflow-hidden">
+			<span class="calcite-title-main">測試 Feature Access</span>
+			<span class="calcite-title-divider hidden-xs"></span>
+			<span class="calcite-title-sub hidden-xs">測速點記錄或提示</span>
+		</div>
+	</nav>
+	<div class="calcite-panels calcite-panels-left calcite-text-light calcite-bg-dark panel-group">
+		<div id="panelInfo" class="panel collapse in">
+			<div id="headingInfo" class="panel-heading" role="tab">
+				<div class="panel-title">
+					<a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo" aria-expanded="true" aria-controls="collapseInfo">
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+						<span class="panel-label">點位維護</span>
+					</a>
+
+				</div>
+			</div>
+			<div id="collapseInfo" class="panel-collapse collapse in " role="tabpanel " aria-labelledby="headingInfo ">
+				<div class="panel-body ">
+					<div id="search-control-ui ">
+						<div id="DangePointArea ">
+							<div>
+								<input type="button" id="btnGetData" value="取得所有點位資料">
+								<input type="button" id="btnAddPoint" value="新增點位">
+								<input type="button" id="btnDelPoint" value="刪除選取點">
+								<div id="lbMsg"></div>
+								<table id="DataList" class="form"></table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="calcite-panels calcite-panels-right calcite-text-light calcite-bg-dark panel-group">
+		<div class="panel collapse in">
+			<div class="panel-heading" role="tab">
+				<div class="panel-title">
+					<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+					<span class="panel-label">圖層清單</span>
+				</div>
+			</div>
+			<div class="panel-collapse collapse in " role="tabpanel " aria-labelledby="headingInfo ">
+				<div class="panel-body">
+					<div id="LayerListArea"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="calcite-map calcite-map-absolute ">
+		<div id="viewDiv"></div>
+	</div>
+</body>
+
+</html>

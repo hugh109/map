@@ -1,0 +1,38 @@
+  .address{
+  	cursor: pointer;
+  }
+  #slider{
+  	margin:15px;
+  }
+  #viewDiv {
+    padding: 0;
+    margin-top: 50px;
+    height: 100%;
+    width: 100%;
+  }
+  #query-input{
+    border-style: none;
+    border-bottom-style:dotted;
+  }
+  #statistic{
+    position:absolute; 
+    right:0px; 
+    bottom:310px;
+    z-index:1;
+    width: 400px; 
+    margin: 0 auto;
+    color: white; 
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 26px;
+  }
+  #avgYear{
+    width: 200px; 
+    float: left;
+    text-align: center;
+  }
+  #avgPrice{
+    width: 200px; 
+    float: right;
+    text-align: center;
+  }
